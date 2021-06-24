@@ -2,11 +2,10 @@ d3.json("samples.json").then((importedData) => {
   
     console.log(importedData);
   
-    //*****************getting names for dropdown*****************
+    // Names for dropdown
     var names = importedData.names;
     console.log(names);
     
-    //building logic for dropdown values
     var html = "";
     for (var i = 0; i < names.length; i++) {
       html+="<option value=" + names[i] + ">" + names[i] + "</option>";
@@ -14,7 +13,7 @@ d3.json("samples.json").then((importedData) => {
     console.log(html)
     d3.select(".well>select").html(html);
   
-    //*****************filter data based on selected dropdown value*****************
+    // Filter drowndown selection data
     function filterData(data, inputValue) {
           
         var dropdownMenu = d3.select("#selDataset");
@@ -37,7 +36,7 @@ d3.json("samples.json").then((importedData) => {
           return data.id === parseInt(subject_id);
         }
     
-      //*******************************The below code is to show the charts without interacting with dropdown*************/
+    // Show charts on page
     samples = importedData.samples
     console.log("samples")
     console.log(samples)
@@ -83,7 +82,7 @@ d3.json("samples.json").then((importedData) => {
     updateGauge(parseInt(filtered_metadata[0].wfreq));
   
   
-    //*********************************************The below code is when user selects any values through dropdown */
+    // Dropdown selection actions
       // Call getData() when a change takes place to the DOM
       d3.selectAll("#selDataset").on("change", getData);
       
